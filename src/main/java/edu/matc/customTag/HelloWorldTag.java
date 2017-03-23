@@ -1,5 +1,7 @@
 package edu.matc.customTag;
 
+import org.apache.log4j.Logger;
+
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
@@ -8,10 +10,12 @@ import javax.servlet.jsp.tagext.TagSupport;
  * Created by Punitha Anandan on 3/12/2017.
  */
 public class HelloWorldTag extends TagSupport {
+    private final Logger log = Logger.getLogger(this.getClass());
     private String date;
 
     @Override
     public int doStartTag() throws JspException {
+        log.info("doStartTag method starts");
         JspWriter out=pageContext.getOut();
         try {
             out.println("Hello Enterprise Java.<br>");
@@ -21,7 +25,7 @@ public class HelloWorldTag extends TagSupport {
                 }
             }
         }catch (Exception exception){
-            exception.printStackTrace();
+            log.error("Exception" + exception );
         }
         return SKIP_BODY;
     }
