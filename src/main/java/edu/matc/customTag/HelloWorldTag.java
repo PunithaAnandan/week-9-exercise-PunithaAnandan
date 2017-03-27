@@ -19,13 +19,15 @@ public class HelloWorldTag extends TagSupport {
         JspWriter out=pageContext.getOut();
         try {
             out.println("Hello Enterprise Java.<br>");
-            if (date != null) {
+           // if (date != null) {
                 if (date.startsWith("10/31")) {
                     out.println("Happy Halloween");
+                } else {
+                    throw new JspException("not matched");
                 }
-            }
         }catch (Exception exception){
             log.error("Exception" + exception );
+            throw new JspException(exception.getMessage());
         }
         return SKIP_BODY;
     }

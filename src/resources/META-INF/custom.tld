@@ -8,7 +8,7 @@
             <tag-class>edu.matc.customTag.HelloWorldTag</tag-class>
             <attribute>
                 <name>date</name>
-                <required>true</required>
+                <required>false</required>
             </attribute>
         </tag>
 </taglib>
